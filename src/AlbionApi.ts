@@ -19,7 +19,7 @@ function baseRequest(baseUrl: string, path: string, queries?: { [key: string]: a
 
   return new Promise((resolve, reject) => {
     request(url, (error, response, body) => {
-      if (error || (response && response.statusCode === 404)) {
+      if (error || (response && response.statusCode !== 200)) {
         reject(error || response);
         return;
       }
